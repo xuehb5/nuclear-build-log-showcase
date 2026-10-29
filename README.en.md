@@ -8,6 +8,8 @@
 
 Nuclear Build Log (核程志) is a **nuclear engineering news collection and information workflow platform**. It brings together construction updates from nuclear companies, engineering organizations and industry publications, reads article bodies, separates publication dates from engineering event dates, and links validated events to specific units and milestones after user confirmation.
 
+**AI-driven automatic maintenance of nuclear construction progress:** With a configured API, AI identifies the specific unit, actual engineering event, associated date and milestone from news article bodies. After the user confirms an article, software validates the result and automatically maintains unit progress and project records, with linked updates to progress visualization and the nuclear project map. Rule-based processing remains available without an API or when model results cannot be used.
+
 It is designed for nuclear power plant owners, engineering, procurement and construction (EPC) teams, design institutes, construction and installation contractors, commissioning teams and engineering information managers. The workflow connects news monitoring, event verification, project tracking, regulatory document retention and English nuclear engineering newsletter production, reducing repeated website searches and manual ledger maintenance.
 
 [Workflow explained](#reading-the-workflow) · [Detailed workflow](docs/ai-workflow.en.md) · [Real screens](#actual-application-screens) · [Real outputs](#real-output-examples) · [Updates](CHANGELOG.en.md) · [Contact](#contact)
@@ -28,7 +30,12 @@ News collection is the entry point; AI semantic interpretation assists decisions
 
 Engineering information can cover project approval and construction start, first concrete (FCD), nuclear island dome lifting, equipment deliveries and installation, cold/hot functional testing, first fuel loading, first criticality, grid connection and commercial operation (COD). The platform distinguishes an engineering event worth collecting from an event sufficient to advance a unit's stage.
 
-While the service is running, default intervals are six hours for news collection and three days for regulatory checks, with on-demand actions also available. A local installation cannot run scheduled tasks while its computer is off or the service is stopped.
+### Automatic collection and archiving schedule
+
+- **Nuclear engineering news: automatically collected and archived every six hours by default, equivalent to four scheduled rounds per day.** Collection covers the configured domestic nuclear news sources and supplementary search channels. The workflow reads article bodies, handles duplicates and retains news in a ledger for publication-month browsing and ongoing tracking.
+- **Regulatory documents: automatically checked and archived every three days by default.** The workflow checks relevant official sources and retains in-scope document records, available attachments and web snapshots.
+
+On-demand collection and checks are also available. Scheduled tasks require the service to be running; a local installation cannot keep collecting while its computer is off or the service is stopped.
 
 ## How AI and software work together
 
@@ -101,12 +108,23 @@ The ledger supports monthly browsing, confirmation, imports, editable dates and 
 
 Confirmed news may update milestones or add units. Progress charts and the map read the same ledger. New sites require sufficient location information and the applicable verification before mapping.
 
-<details>
-<summary>Progress visualization workspace</summary>
+### Nuclear project map: province and site selection
+
+**After clicking Guangdong Province:** the map highlights the province and displays its nuclear project site markers. The panel on the right lists project names, companies, unit codes, reactor types and current engineering stages.
+
+<img src="assets/nuclear-map.png" alt="Actual Guangdong selection showing province highlighting, site markers and project/unit records" width="100%">
+
+**After selecting the Lufeng project:** the map shows a single labelled Lufeng site marker and highlights the matching project card on the right. Clicking a map marker also selects its project, linking the geographic view and project list in both directions.
+
+<img src="assets/nuclear-map-site.png" alt="Actual Lufeng selection showing a single site marker and the highlighted project card with unit stages" width="100%">
+
+Click a unit code to open its project-status record. Stage text follows the progress-chart colour scheme. The map reads the same project ledger, so effective updates from confirmed news and manual maintenance also feed the displayed stages. [Step-by-step map guide](docs/map-guide.en.md).
+
+### Progress visualization: unit stages and construction durations
 
 <img src="assets/progress-workspace.png" alt="Actual progress chart workspace" width="100%">
 
-</details>
+The workspace supports stage filtering, unit searches and comparison of ACT elapsed duration with ECT planned duration. Planned units are excluded and commercially operating units do not display ECT. The complete exported chart appears under Real output examples below.
 
 ### Regulatory archives
 
@@ -128,7 +146,7 @@ The user selects news and checks facts, text and captions before exporting. Repo
 
 <img src="assets/progress-chart.png" alt="Actual exported Gen-III construction progress chart including its legend and Note box" width="100%">
 
-Generated directly by the website's existing chart-export function using the ledger snapshot. The configured legend, Note box and attribution are retained. Planned units are excluded; operating units have no ECT bar. ACT uses total elapsed days divided by 30.4375, ending at today's date for units under construction and at COD for operating units.
+Generated by the website's existing chart-export function using the ledger snapshot, retaining its legend and Note box. The public copy's attribution has been replaced with **XXX-Nuclear Division**. Planned units are excluded; operating units have no ECT bar. ACT uses total elapsed days divided by 30.4375, ending at today's date for units under construction and at COD for operating units.
 
 ### Generated engineering editorial article
 

@@ -18,6 +18,8 @@ The Lufeng units shown are at different stages. Confirmation does not necessaril
 
 ## Visualize progress and export the chart
 
+The nuclear project map also connects province, site and unit selection: [view actual interaction captures and instructions](map-guide.en.md).
+
 ![Actual progress workspace](../assets/progress-workspace.png)
 
 Users can filter stages, locate units and download a complete image. The following is a direct export from the website's drawing function, including the legend and Note box, rather than a chart recreated with another plotting tool.

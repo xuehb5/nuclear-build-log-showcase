@@ -6,6 +6,10 @@ This log describes public product materials and capabilities, not private implem
 
 ## 29 October 2026
 
+- Highlighted the default six-hour news collection/archiving interval (four rounds per day), three-day regulatory checks and AI-assisted automatic progress maintenance after news confirmation.
+- Added real province/site map interaction captures and bilingual instructions, and made the progress workspace visible without expanding a section.
+- Regenerated the public chart with the placeholder attribution XXX-Nuclear Division, retaining its data, legend and Note box.
+
 - Clarified the positioning as a nuclear construction news automation and AI workflow platform, with use cases for plant owners, EPC teams, designers, construction and commissioning professionals.
 - Explained the workflow diagram step by step in both overview pages and added complete English workflow, visual walkthrough, banner, usage-scope and security pages.
 - Added the maintainer's email and WeChat contact to both introductions.
