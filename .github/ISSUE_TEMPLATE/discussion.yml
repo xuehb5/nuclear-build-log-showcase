@@ -1,0 +1,11 @@
+name: 使用与合作交流 / Enquiry
+description: 讨论使用场景或请求进一步联系
+title: "[交流] "
+body:
+  - type: textarea
+    id: enquiry
+    attributes:
+      label: 想了解什么？
+      description: 请仅填写适合公开的信息，不要填写手机号、私人邮箱或业务机密。
+    validations:
+      required: true
