@@ -1,0 +1,17 @@
+name: 功能建议 / Feature request
+description: 描述你希望改进的工作场景
+title: "[建议] "
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 你想完成什么工作？
+      description: 描述场景、现有做法和遇到的困难，请勿上传敏感资料。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 希望平台如何帮助你？
+    validations:
+      required: true
