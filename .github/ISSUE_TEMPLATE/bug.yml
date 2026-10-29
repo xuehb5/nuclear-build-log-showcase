@@ -1,0 +1,27 @@
+name: 界面或功能问题 / Bug report
+description: 提交可复现的使用问题
+title: "[问题] "
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: 操作步骤与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 系统、浏览器与平台版本（如已知）
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我已移除密钥、个人信息、未公开报告和其他敏感内容。
+          required: true
