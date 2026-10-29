@@ -22,11 +22,11 @@ This is a public product showcase, not an open-source release of the platform. C
 
 | Engineering information task | How the platform helps |
 | --- | --- |
-| Nuclear construction news monitoring | Software collects on a schedule and imports web or WeChat article links. With an API configured, AI assists interpretation of engineering events, actual units and event-date associations, and reviews selected ambiguous duplicates. Sources, dates, summaries and original evidence remain in one ledger |
-| Project progress and unit milestone tracking | AI distinguishes completed work from planned activities and background information, assessing whether an event supports a unit milestone update. After user confirmation, software validates evidence and applies changes, with rule-based fallback when AI is unavailable |
-| Multi-project and multi-site information management | AI helps match reported events to specific units, reducing erroneous updates to other units at the same site. Software writes validated, confirmed results to shared project records that drive status, charts and the map; manual maintenance is also supported |
-| Nuclear regulatory document archiving | AI helps identify primary plant/unit subjects, EIA report and licence categories, and relevant attachments in notices. Software scans official sources, validates scope and files, and retains available attachments, web snapshots and versions |
-| Engineering newsletters and English technical reporting | Users select articles in batches; AI uses source evidence to correct translation and produce engineering titles, leads, body text, highlights, captions and image suggestions. Users can edit and verify the result; software exports an article or whole issue using a fixed template |
+| Nuclear construction news monitoring | Collect on a schedule or on demand, import web and WeChat article links, and browse sources, dates, summaries and original text in one ledger |
+| Project progress and unit milestone tracking | AI helps identify units, events and dates; software validates and updates records after user confirmation, with rule-based fallback |
+| Multi-project and multi-site information management | Browse by publication month, confirmation status or unit, with shared project records across status, progress charts and the nuclear project map |
+| Nuclear regulatory document archiving | Track EIA reports and licences for primary plants and units, retaining available official attachments, web snapshots and versions |
+| Engineering newsletters and English technical reporting | Select articles in batches for AI-assisted translation and engineering editing, then review and export an article or whole issue using a fixed template |
 
 News collection is the entry point; AI semantic interpretation assists decisions; the project ledger connects the workflow; charts, the map, document archives and reports serve different information needs.
 
@@ -188,3 +188,4 @@ Use [Issues](../../issues) for suggestions, reproducible problems or enquiries. 
 For product enquiries, feedback, deployment or collaboration, please get in touch. Report security concerns privately by email.
 
 The showcase contains selected public-facing materials, not the platform's private implementation, prompts, full data or credentials. See [NOTICE.en.md](NOTICE.en.md). Automated extraction and AI decisions still require source checking; inaccessible or previously removed attachments cannot always be recovered.
+
