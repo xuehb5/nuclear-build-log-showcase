@@ -6,6 +6,8 @@ This log describes public product materials and capabilities, not private implem
 
 ## 29 October 2026
 
+- Added actual model-management and selection captures with bilingual instructions for multiple independent API/model profiles and switching; screenshots contain no API keys.
+
 - Highlighted the default six-hour news collection/archiving interval (four rounds per day), three-day regulatory checks and AI-assisted automatic progress maintenance after news confirmation.
 - Added real province/site map interaction captures and bilingual instructions, and made the progress workspace visible without expanding a section.
 - Regenerated the public chart with the placeholder attribution XXX-Nuclear Division, retaining its data, legend and Note box.

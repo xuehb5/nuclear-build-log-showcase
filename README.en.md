@@ -12,7 +12,7 @@ Nuclear Build Log (核程志) is a **nuclear engineering news collection and inf
 
 It is designed for nuclear power plant owners, engineering, procurement and construction (EPC) teams, design institutes, construction and installation contractors, commissioning teams and engineering information managers. The workflow connects news monitoring, event verification, project tracking, regulatory document retention and English nuclear engineering newsletter production, reducing repeated website searches and manual ledger maintenance.
 
-[Workflow explained](#reading-the-workflow) · [Detailed workflow](docs/ai-workflow.en.md) · [Real screens](#actual-application-screens) · [Real outputs](#real-output-examples) · [Updates](CHANGELOG.en.md) · [Contact](#contact)
+[Workflow explained](#reading-the-workflow) · [Detailed workflow](docs/ai-workflow.en.md) · [Real screens](#actual-application-screens) · [AI model setup](#bring-your-own-ai-models-multiple-api-profiles-and-model-switching) · [Real outputs](#real-output-examples) · [Updates](CHANGELOG.en.md) · [Contact](#contact)
 
 This is a public product showcase, not an open-source release of the platform. Core code, full business databases, API keys, model weights and installers remain private. No public live service URL is currently listed. Screenshots and real outputs below were captured on **29 October 2026** and represent the maintained records at that time.
 
@@ -137,6 +137,20 @@ Coverage includes primary plant/unit environmental impact assessment reports and
 <img src="assets/report-workspace.png" alt="Actual Lufeng Unit 1 report workspace with English content, images and original evidence" width="100%">
 
 The user selects news and checks facts, text and captions before exporting. Report preparation is separate from news confirmation and project-state changes. [Original condenser article](https://power.in-en.com/html/power-2480157.shtml).
+
+### Bring your own AI models: multiple API profiles and model switching
+
+Users can add **multiple OpenAI-compatible API/model profiles**, each with its own display name, endpoint, model name and API key. Create separate profiles for providers, models or workflows, then choose the active model through the interface without changing application code.
+
+**Manage and add models:** open Report builder → Settings → Manage models to add, edit or delete a profile. This actual management-window capture shows the existing profile and add-model form. The API key field is empty; no key is shown.
+
+<img src="assets/model-management.png" alt="Actual AI model manager with existing profile, add-model form, endpoint and model fields, and an empty API key field" width="100%">
+
+**Select and switch models:** saved API profiles appear under Settings → Generation model, with the current selection marked. Profiles are retained independently and can be selected for subsequent model calls. Switching alone does not rewrite saved report content.
+
+<img src="assets/model-selection.png" alt="Actual model selection interface with the current-model marker and model-management entry" width="100%">
+
+The screenshots retain the actual configured state. Report generation and enabled AI assistance for news semantic review and regulatory archiving reuse the selected API profile. [Guide to adding API profiles and switching models](docs/model-guide.en.md).
 
 ## Real output examples
 
