@@ -1,31 +1,156 @@
-# Nuclear Build Log · 核程志
+<p align="center"><img src="assets/brand-banner.en.svg" alt="Nuclear Build Log — AI-assisted nuclear engineering intelligence" width="100%"></p>
 
-**A workspace for tracking nuclear construction news, project milestones and engineering reports in China.**
+**[English](README.en.md) · [简体中文](README.md)**
 
-[中文介绍](README.md) · [Updates](CHANGELOG.md) · [Feedback](../../issues/new/choose)
+# Nuclear Build Log | Nuclear Construction News Automation & AI Workflow Platform
 
-This public repository presents the product and collects feedback. It does not publish the platform's core source code, production data, API credentials, local models or installers. No public live service URL is currently listed here.
+**Automatically collect nuclear construction news in China and connect AI-assisted event recognition with unit milestones, project records, progress charts and engineering reports.**
 
-## Product overview
+Nuclear Build Log (核程志) is a **nuclear engineering news collection and information workflow platform**. It brings together construction updates from nuclear companies, engineering organizations and industry publications, reads article bodies, separates publication dates from engineering event dates, and links validated events to specific units and milestones after user confirmation.
 
-- Collect engineering news, import article links, distinguish publication and event dates, and manage confirmation and duplicate reports.
-- Maintain unit milestones and project stages, with linked progress views and exportable charts.
-- Archive primary nuclear plant/unit environmental impact assessment reports and construction/operating licences, including available attachments.
-- Prepare English engineering reports from selected articles, edit facts and captions, and export a full issue or an individual article.
-- Use Chinese, English and French interfaces, with local translation and optional configured language-model services.
+It is designed for nuclear power plant owners, engineering, procurement and construction (EPC) teams, design institutes, construction and installation contractors, commissioning teams and engineering information managers. The workflow connects news monitoring, event verification, project tracking, regulatory document retention and English nuclear engineering newsletter production, reducing repeated website searches and manual ledger maintenance.
 
-Automatic extraction, translation and model-assisted decisions require review against original sources. The archive cannot guarantee recovery of files already removed before collection.
+[Workflow explained](#reading-the-workflow) · [Detailed workflow](docs/ai-workflow.en.md) · [Real screens](#actual-application-screens) · [Real outputs](#real-output-examples) · [Updates](CHANGELOG.en.md) · [Contact](#contact)
 
-## Demonstration
+This is a public product showcase, not an open-source release of the platform. Core code, full business databases, API keys, model weights and installers remain private. No public live service URL is currently listed. Screenshots and real outputs below were captured on **29 October 2026** and represent the maintained records at that time.
 
-The screenshots in the [Chinese overview](README.md#界面演示) show the real product running in an isolated demonstration environment. All unit names, events and report facts are fictional and clearly labelled. They do not describe real nuclear facilities.
+## Workflows for nuclear engineering professionals
 
-[Demo PDF](examples/engineering-report-demo.pdf) · [Demo DOCX](examples/engineering-report-demo.docx) · [Visual walkthrough](docs/walkthrough.md)
+| Engineering information task | How the platform helps |
+| --- | --- |
+| Nuclear construction news monitoring | Check sources on a schedule, collect on demand and import web or WeChat article links into one ledger with sources, dates, summaries and original evidence |
+| Project progress and unit milestone tracking | Identify the unit, engineering event and event date; assess updates after confirmation without treating planned or historical events as completed milestones |
+| Multi-project and multi-site information management | Browse news by publication month, confirmation status or unit, with shared records across project status, progress charts and the nuclear project map |
+| Nuclear regulatory document archiving | Retain available official environmental impact assessment reports, construction licences and operating licences for primary plants/units, with attachments, web snapshots and versions |
+| Engineering newsletters and English technical reporting | Select articles in batches, generate editable English engineering content grounded in source evidence, and export an individual article or a complete issue |
 
-The sample report uses the application's export workflow. Its header attribution is replaced with a product demonstration label. It illustrates document presentation and is not a real engineering report.
+News collection is the entry point; AI semantic interpretation assists decisions; the project ledger connects the workflow; charts, the map, document archives and reports serve different information needs.
 
-## Feedback and availability
+Engineering information can cover project approval and construction start, first concrete (FCD), nuclear island dome lifting, equipment deliveries and installation, cold/hot functional testing, first fuel loading, first criticality, grid connection and commercial operation (COD). The platform distinguishes an engineering event worth collecting from an event sufficient to advance a unit's stage.
 
-Use [Issues](../../issues) for suggestions, reproducible interface problems or general enquiries. Remove credentials, personal information and confidential material from all submissions. Pricing, service commitments and a public launch date have not been announced in this repository.
+While the service is running, default intervals are six hours for news collection and three days for regulatory checks, with on-demand actions also available. A local installation cannot run scheduled tasks while its computer is off or the service is stopped.
 
-This is a product showcase, not an open-source distribution of the platform. See [NOTICE.md](NOTICE.md) for the scope of the published materials.
+## How AI and software work together
+
+The platform combines AI semantic interpretation with deterministic software checks and user confirmation. AI helps interpret events and classify relevant information; software verifies evidence, controls database changes and keeps a rule-based fallback available.
+
+```mermaid
+flowchart TB
+  A[Scheduled collection / link import / pasted body] --> B[Software cleans body, extracts dates and candidate units]
+  B --> C[Rule-based deduplication; AI reviews ambiguous candidates]
+  C --> D[News ledger: original evidence, summary and separate dates]
+  D --> E[With API: background AI review of event, unit, milestone and date]
+  D --> F[User confirms article]
+  E --> G[Reuse cached review; software validates evidence and confidence]
+  F --> G
+  G --> H[Software applies update / adds a unit / leaves status unchanged]
+  H --> I[Project ledger]
+  I --> J[Progress visualization and chart export]
+  I --> K[Map: province, site and unit stage]
+  D --> L[User selects news for a report]
+  L --> M[Local translation draft; API correction and engineering editing]
+  M --> N[Title, lead, body, keywords, highlights, captions and layout suggestions]
+  N --> O[User checks and edits; software exports an article or issue]
+  P[Scheduled scans of official regulatory sources] --> Q[AI assists subject, category and attachment identification]
+  Q --> R[Software validates dates, scope, links and file formats]
+  R --> S[Download, retain versions, classify and save web snapshots]
+```
+
+### Reading the workflow
+
+The diagram describes the platform's engineering information workflow across three paths: **news-to-project updates, regulatory archiving and report production**. The paths share sources and facts while retaining separate controls. Collecting a report of a future milestone does not automatically advance a unit's status, and producing a newsletter does not change the project ledger.
+
+1. **Read the source before interpreting the event.** Scheduled collection and manual imports feed the same news-processing chain. Software cleans article bodies, records publication and engineering event dates separately, and identifies candidate units and rule-based results. Missing body text or unsupported dates are not presented as verified facts.
+2. **Use rules first for duplicates, with AI for ambiguous cases.** Software removes clear duplicates; a configured API can review a limited set of borderline candidates. Multiple reports of one unit's first fuel loading may describe one event, whereas deliveries of different equipment must not be merged merely because both are deliveries.
+3. **Review in the background and validate at confirmation.** AI distinguishes completed work from planned activities and associates the actual unit, milestone and body-text date. Software caches the decision and checks its evidence. Confirmation reuses a valid cached review where possible; a high-confidence result is accepted only after validation, otherwise rules provide the fallback. Background review alone does not update project records.
+4. **Drive three views from one ledger.** Software updates an existing unit, adds a unit when supported, or leaves status unchanged. Project status, progress visualization and the map read the same records. The chart computes elapsed time and the map displays locations and stages, rather than each independently reinterpreting the news. Withdrawing confirmation can reverse the corresponding automatic effects; manual maintenance also feeds these views.
+5. **Archive regulatory material through a separate official-source path.** Software scans notices, AI helps identify primary plant/unit subjects, document types and relevant attachments, and software validates and downloads the files with version retention. Archiving a document does not update a unit's status and does not imply legal or policy interpretation.
+6. **Let users select, AI edit and software format reports.** With an API, the model uses source text and engineering facts to correct translation and produce a title, lead, body, highlighting, captions and layout suggestions. Users can edit the result. Software enforces the document style and exports an article or whole issue in engineering-date order. Real outputs appear below.
+
+AI nodes require an available configured API. **Rule-based paths remain available without an API.** Arrows show information flow, not a guarantee that every article causes a project-stage change.
+
+| Stage | AI contribution when an API is configured | Software checks and execution |
+| --- | --- | --- |
+| News understanding | Identify the main reported event, affected units, event state and the relationship between an event and a body-text date | Collect and clean articles; extract and validate dates; find candidates; verify original evidence. News-card summaries retain their rule-based generation logic |
+| Duplicate reports | Review a limited set of ambiguous candidate duplicates | Deduplicate links and content; distinguish unique milestones from repeatable equipment events |
+| Project updates | Review whether a milestone actually occurred and extract source-supported new-project information | Apply changes after user confirmation; accept validated high-confidence AI decisions and fall back to rules otherwise; reverse corresponding automatic effects when confirmation is withdrawn |
+| Charts and map | Improve the upstream interpretation of the news | Read the same project ledger, calculate durations and display unit stages and plant locations; manual edits also feed these views |
+| Regulatory archives | Classify the primary plant/unit subject and document type; help select relevant attachments from mixed notices | Scan official sources, enforce date/scope limits, validate downloads, retain hashes and versions, and archive files by category |
+| Engineering reports | Correct translation and produce engineering-focused titles, leads, text, keywords, highlighting, captions and layout suggestions | Supply facts and sources, preserve edits, enforce the document template and export individual articles or a whole issue in event-date order, with undated items last |
+
+Background pre-review and cached decisions reduce repeated work at confirmation. AI does not write project data directly. A report saying a unit *will soon* enter operation must not be treated as completed commercial operation; a Unit 3 event must not automatically update Unit 4.
+
+Without an API, rule-based collection, event interpretation, project updates and regulatory archiving remain available. An installed local translation model supplies local drafts, with basic program-generated report content as a fallback. This is a functional fallback, not a claim of equal output quality.
+
+The [English workflow guide](docs/ai-workflow.en.md) explains the separate news, project, regulatory and report paths, including confirmation and evidence checks.
+
+## Actual application screens
+
+These captures use the running website and real maintained records, rather than fictional demo data.
+The screenshots retain the Chinese UI as captured; the platform also offers English and French interface options.
+
+### News collection
+
+<img src="assets/news-workspace.png" alt="Actual news ledger with separate publication and engineering event dates" width="100%">
+
+The ledger supports monthly browsing, confirmation, imports, editable dates and report selection. [Original Lianjiang article](https://power.in-en.com/html/power-2480128.shtml).
+
+### Project status
+
+<img src="assets/project-status.png" alt="Actual Lufeng unit records with reactor types, stages and milestones" width="100%">
+
+Confirmed news may update milestones or add units. Progress charts and the map read the same ledger. New sites require sufficient location information and the applicable verification before mapping.
+
+<details>
+<summary>Progress visualization workspace</summary>
+
+<img src="assets/progress-workspace.png" alt="Actual progress chart workspace" width="100%">
+
+</details>
+
+### Regulatory archives
+
+<img src="assets/regulatory-archive.png" alt="Actual archive with official notices, saved web snapshots and downloaded attachments" width="100%">
+
+Coverage includes primary plant/unit environmental impact assessment reports and construction/operating licences from 1 January 2025 onward. Routine checks run every three days, with retries for failures. Classification and archiving do not imply automated legal or policy interpretation.
+
+### Report workspace
+
+<img src="assets/report-workspace.png" alt="Actual Lufeng Unit 1 report workspace with English content, images and original evidence" width="100%">
+
+The user selects news and checks facts, text and captions before exporting. Report preparation is separate from news confirmation and project-state changes. [Original condenser article](https://power.in-en.com/html/power-2480157.shtml).
+
+## Real output examples
+
+### Exported progress chart
+
+[Full-resolution PNG](assets/progress-chart.png)
+
+<img src="assets/progress-chart.png" alt="Actual exported Gen-III construction progress chart including its legend and Note box" width="100%">
+
+Generated directly by the website's existing chart-export function using the ledger snapshot. The configured legend, Note box and attribution are retained. Planned units are excluded; operating units have no ECT bar. ACT uses total elapsed days divided by 30.4375, ending at today's date for units under construction and at COD for operating units.
+
+### Generated engineering editorial article
+
+[Actual report PDF](examples/lufeng-1-editorial-example.pdf) · [Corresponding DOCX](examples/lufeng-1-editorial-example.docx)
+
+<img src="assets/editorial-example-page-1.png" alt="Actual engineering editorial export for Lufeng Unit 1 condenser installation" width="100%">
+
+This is an existing generated article exported through the application's individual-article workflow. It shows the unit title highlight, source hyperlink, months since FCD, blue lead box, photograph, caption and highlighted body text. The lead and body have not been manually rewritten for this showcase. Only the public copy's internal header attribution and author metadata were adapted; the production template and saved business content were not changed. News and source photographs remain the property of their respective publishers.
+
+The earlier [fictional PDF example](examples/engineering-report-demo.pdf) and [DOCX](examples/engineering-report-demo.docx) remain available as clearly separate formatting samples.
+
+[Step-by-step visual walkthrough in English](docs/walkthrough.en.md)
+
+## Feedback and publication scope
+
+Use [Issues](../../issues) for suggestions, reproducible problems or enquiries. Remove credentials, personal information and confidential content from submissions. Pricing, service commitments and a public launch date have not been announced here.
+
+### Contact
+
+- **Email:** [18085285748@163.com](mailto:18085285748@163.com)
+- **WeChat:** XHB18085285748
+
+For product enquiries, feedback, deployment or collaboration, please get in touch. Report security concerns privately by email.
+
+The showcase contains selected public-facing materials, not the platform's private implementation, prompts, full data or credentials. See [NOTICE.en.md](NOTICE.en.md). Automated extraction and AI decisions still require source checking; inaccessible or previously removed attachments cannot always be recovered.
